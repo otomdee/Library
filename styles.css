@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #111827;
+    color: white;
+}
+
+#container {
+    grid-column: 2/3;
+    background-color: #1F2937;
+    padding: 20px;
+    border-radius: 10px;
+}
