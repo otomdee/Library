@@ -24,18 +24,17 @@ function addBookToDOM(book) {
     const cardRead = document.createElement("span");
 
     //populate card//
-    cardTitle.innerHTML = `${book.title}`;
-    cardAuthor.innerHTML = `${book.author}`;
-    cardPages.innerHTML = `${book.pages}`;
+    cardTitle.innerHTML = `Title: ${book.title}`;
+    cardAuthor.innerHTML = `Author: ${book.author}`;
+    cardPages.innerHTML = `Pages: ${book.pages}`;
     if (book.read === false) {
-        cardRead.innerHTML = "Read";
+        cardRead.innerHTML = "Current Status: Read";
     }
     else {
-        cardRead.innerHTML = "Not read";
+        cardRead.innerHTML = "Current Status: Not read";
     }
 
     //add items to card//
-
     card.append(cardTitle);
     card.append(cardAuthor);
     card.append(cardPages);
@@ -45,7 +44,17 @@ function addBookToDOM(book) {
     return card;
 }
 
+//dummy books//
+addBookToLibrary(new Book("green", "mayd", 13, true));
+addBookToLibrary(new Book("blue", "ray", 156, false));
+addBookToLibrary(new Book("wert", "steve", 78, false));
+addBookToLibrary(new Book("blue", "ray", 156, false));
+
 //Loop through mylibrary and add each book to DOM//
 myLibrary.forEach((item) => {
     container.append(addBookToDOM(item));
 });
+
+//New Book button//
+
+const newButton = document.querySelector("#newBook");
