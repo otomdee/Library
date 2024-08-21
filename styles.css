@@ -12,3 +12,8 @@ body {
     padding: 20px;
     border-radius: 10px;
 }
+
+.bookCard {
+    height: 100px;
+    width: 100px;
+}
