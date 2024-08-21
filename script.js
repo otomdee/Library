@@ -27,7 +27,7 @@ function addBookToDOM(book) {
     cardTitle.innerHTML = `Title: ${book.title}`;
     cardAuthor.innerHTML = `Author: ${book.author}`;
     cardPages.innerHTML = `Pages: ${book.pages}`;
-    if (book.read === false) {
+    if (book.read === true) {
         cardRead.innerHTML = "Current Status: Read";
     }
     else {
@@ -47,14 +47,46 @@ function addBookToDOM(book) {
 //dummy books//
 addBookToLibrary(new Book("green", "mayd", 13, true));
 addBookToLibrary(new Book("blue", "ray", 156, false));
-addBookToLibrary(new Book("wert", "steve", 78, false));
-addBookToLibrary(new Book("blue", "ray", 156, false));
 
-//Loop through mylibrary and add each book to DOM//
+
 myLibrary.forEach((item) => {
     container.append(addBookToDOM(item));
 });
 
 //New Book button//
+const newBookButton = document.querySelector("#newBook");
+const dialog = document.querySelector("#bookDialog");
+newBookButton.addEventListener("click", () => {
+    dialog.showModal();
+})
+//click outside modal to close//
+dialog.addEventListener("click", e => {
+    const dialogDimensions = dialog.getBoundingClientRect()
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      dialog.close()
+    }
+  })
 
-const newButton = document.querySelector("#newBook");
+//recieve book input from form//
+const form = document.querySelector("#bookForm");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    //create book from current form values//
+    const title = document.querySelector("#titleInput");
+    const author = document.querySelector("#authorInput");
+    const pages = document.querySelector("#pagesInput");
+    const status = document.querySelector("#statusInput");
+
+    const book = new Book(title.value, author.value, pages.value, status.checked);
+
+    addBookToLibrary(book);
+    container.append(addBookToDOM(book));
+    form.reset();
+    dialog.close();
+})

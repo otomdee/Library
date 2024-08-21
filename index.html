@@ -9,6 +9,28 @@
 <body>
     <div id="container"></div>
     <button id="newBook">NEW BOOK</button>
+    <dialog id="bookDialog">
+        <form id="bookForm">    
+            <div id="dialogText">
+                <label for="titleInput">Title: </label>
+                <input type="text" name="title" id="titleInput">
+                <label for="authorInput">Author: </label>
+                <input type="text" name="author" id="authorInput">
+                <label for="pagesInput">Pages:</label>
+                <input type="number" name="pages" id="pagesInput">
+            </div>
+
+            <div id="dialogCheckBox">
+                <label for="statusInput">Current Status(Read/Not Read):</label>
+                <input type="checkbox" name="status" id="statusInput">
+            </div>
+
+            <div id="dialogButtons">
+                <button type="submit" formmethod="dialog">Cancel</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </dialog>
     <script src="script.js"></script>
 </body>
 </html>
